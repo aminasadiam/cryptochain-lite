@@ -1,5 +1,5 @@
 const Block = require("./block");
-const cryptoHash = require("./crypto-hash");
+const cryptoHash = require("../utils/crypto-hash");
 const HexToBinary = require("hex-to-binary"); // Used for precise difficulty validation
 
 class Blockchain {
