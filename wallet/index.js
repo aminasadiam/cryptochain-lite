@@ -1,6 +1,5 @@
 const { STATRING_BALANCE } = require("../config");
-const { ec } = require("../utils");
-const cryptoHash = require("../utils/crypto-hash");
+const { ec, cryptoHash } = require("../utils");
 
 class Wallet {
     constructor() {
