@@ -13,6 +13,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "eslint": "^9.30.1",
     "jest": "^30.0.4"
   },
   "dependencies": {
