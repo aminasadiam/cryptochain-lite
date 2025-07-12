@@ -2,6 +2,7 @@ const Transaction = require('./transaction');
 const Wallet = require('../wallet');
 const { verifySignature } = require('../utils');
 const e = require('express');
+const { REWARD_INPUT, MINITNG_REWARD } = require('../config');
 
 describe('Transaction', () => {
     let transaction, senderWallet, recipient, amount;
@@ -155,6 +156,23 @@ describe('Transaction', () => {
                     expect(transaction.outputMap[senderWallet.publicKey]).toEqual(originalSenderOutput - newAmount - addedAmount);
                 })
             })
+        });
+    });
+
+    describe('rewardTransaction()', () => {
+        let rewardTransaction, minerWallet;
+
+        beforeEach(() => {
+            minerWallet = new Wallet();
+            rewardTransaction = Transaction.rewardTransaction({minerWallet});
+        });
+
+        it('creates transactions with the reward input', () => {
+           expect(rewardTransaction.input).toEqual(REWARD_INPUT); 
+        });
+
+        it('creates one transaction for miner with the `MINING_REWARD`', () => {
+            expect(rewardTransaction.outputMap[minerWallet.publicKey]).toEqual(MINITNG_REWARD);
         });
     });
 });

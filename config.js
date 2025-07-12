@@ -2,6 +2,9 @@ let INITIAL_DIFFICULTY = 3;
 const MINE_RATE = 1000; // milliseconds
 const STATRING_BALANCE = 1000;
 
+const REWARD_INPUT = { address: "*authorized-reward*" };
+const MINITNG_REWARD = 50;
+
 const GENESIS_DATA = {
     timestamp: 1,
     previousHash: '0',
@@ -14,5 +17,7 @@ const GENESIS_DATA = {
 module.exports = {
     GENESIS_DATA,
     MINE_RATE,
-    STATRING_BALANCE
+    STATRING_BALANCE,
+    REWARD_INPUT,
+    MINITNG_REWARD
 };

@@ -51,7 +51,11 @@ class PubSub {
                 console.log(`Received message on ${channel}: ${message}`);
                 break;
             case CHANNEL.BLOCKCHAIN:
-                this.blockchain.replaceChain(parsedMessage);
+                this.blockchain.replaceChain(parsedMessage, () => {
+                    this.transactionPool.clearBlockchainTranactions({
+                        chain: parsedMessage
+                    });
+                });
                 break;
             case CHANNEL.TRANSACTION:
                 this.transactionPool.setTransaction(parsedMessage);
